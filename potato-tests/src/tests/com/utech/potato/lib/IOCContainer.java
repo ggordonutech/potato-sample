@@ -20,7 +20,7 @@ public class IOCContainer extends AbstractModule {
 	}
 	@Override
 	protected void configure() {
-		bind(IPriceMachine.class).toInstance(new MockPriceMachine(3));
+		bind(IPriceMachine.class).toInstance(new MockPriceMachine(1));
 		
 	}
 
