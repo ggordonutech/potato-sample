@@ -1,12 +1,10 @@
 package tests.com.utech.potato.lib;
 
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-
+import org.junit.Before;
+import org.junit.BeforeClass;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.utech.potato.lib.IPriceMachine;
@@ -17,12 +15,12 @@ public class PriceMachineTest {
 	
 	private static Injector injector;
 	
-	@BeforeAll
+	@BeforeClass
 	public static void beforeAll() {
 		injector = Guice.createInjector(new IOCContainer());
 	}
 	
-	@BeforeEach
+	@Before
 	public void beforeEach() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		//machine = (IPriceMachine)Class.forName("com.utech.potato.lib.PriceMachine").newInstance();
 		machine = injector.getInstance(IPriceMachine.class);
@@ -30,7 +28,7 @@ public class PriceMachineTest {
 	}
 	
 	
-	@Test
+	@org.junit.Test
 	public void shouldCalculateWightInPounds() 
 			throws ClassNotFoundException, 
 			InstantiationException, 
@@ -38,7 +36,7 @@ public class PriceMachineTest {
 		
 		
 		assertNotNull(machine);
-		assertEquals(3*IPriceMachine.PRICE_PER_POUND,machine.getPriceOfPotato(3));
+		assertEquals(3*IPriceMachine.PRICE_PER_POUND,machine.getPriceOfPotato(3),0);
 		
 	}
 
